@@ -2,13 +2,14 @@
 /// ============================================================================
 ///		Author		: M. Ivanchenko
 ///		Date create	: 22-10-2014
-///		Date update	: 22-10-2014
+///		Date update	: 23-10-2014
 ///		Comment		:
 /// ============================================================================
 #include <QDialog>
 #include <QWidget>
 #include <QLineEdit>
 #include <QPushButton>
+#include <QCheckBox>
 
 #ifndef __DIALOG_KEYGEN_H__
 #define __DIALOG_KEYGEN_H__
@@ -54,6 +55,8 @@ namespace widgets
         QWidget* init_login( );
         /// --------------------------------------------------------------------
         QWidget* init_pwd( );
+        /// --------------------------------------------------------------------
+        QWidget* init_admin_check( );
         /// --------------------------------------------------------------------
         QWidget* init_buttons( );
 
@@ -109,6 +112,7 @@ namespace widgets
         QLineEdit   *_txt_full_name;
         QLineEdit   *_txt_login;
         QLineEdit   *_txt_pwd;
+        QCheckBox   *_chk_admin;
 
         QPushButton *_btn_load;
         QPushButton *_btn_ok;
@@ -133,6 +137,7 @@ namespace widgets
                             const QString &x_login = QString( "" ),
                             const QString &x_hash = QString( "" )
                             ) :
+            _is_su( false ),
             _x_full_name( x_full_name ),
             _x_login( x_login ),
             _x_hash( x_hash )
@@ -141,6 +146,7 @@ namespace widgets
 
         /// --------------------------------------------------------------------
         explicit keygen_data( const keygen_data &rhs ) :
+            _is_su( rhs._is_su ),
             _x_full_name( rhs._x_full_name ),
             _x_login( rhs._x_login ),
             _x_hash( rhs._x_hash )
@@ -176,9 +182,10 @@ namespace widgets
                 return *this;
             }
 
+            this->_is_su       = rhs._is_su;
             this->_x_full_name = rhs._x_full_name;
-            this->_x_login = rhs._x_login;
-            this->_x_hash = rhs._x_hash;
+            this->_x_login     = rhs._x_login;
+            this->_x_hash      = rhs._x_hash;
 
             return *this;
         }
@@ -187,9 +194,10 @@ namespace widgets
     ///			FIELDS
     /// ========================================================================
     private:
-        QString   _x_full_name;
-        QString   _x_login;
-        QString   _x_hash;
+        bool        _is_su;
+        QString     _x_full_name;
+        QString     _x_login;
+        QString     _x_hash;
 
     };//class keygen_data
 /// ############################################################################

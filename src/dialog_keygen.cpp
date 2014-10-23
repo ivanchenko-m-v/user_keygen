@@ -2,7 +2,7 @@
 /// ============================================================================
 ///		Author		: M. Ivanchenko
 ///		Date create	: 22-10-2014
-///		Date update	: 22-10-2014
+///		Date update	: 23-10-2014
 ///		Comment		:
 /// ============================================================================
 #include <QApplication>
@@ -93,6 +93,7 @@ namespace widgets
         vl->addWidget( this->init_full_name( ) );
         vl->addWidget( this->init_login( ) );
         vl->addWidget( this->init_pwd( ) );
+        vl->addWidget( this->init_admin_check( ) );
         vl->addWidget( this->init_buttons( ) );
 
         this->setLayout(vl);
@@ -190,6 +191,16 @@ namespace widgets
         widget->setLayout(vl);
 
         return widget;
+    }
+
+    /// ------------------------------------------------------------------------
+	///	init_admin_check( )
+    /// ------------------------------------------------------------------------
+    QWidget* dialog_keygen::init_admin_check( )
+    {
+        this->_chk_admin = new QCheckBox( tr( "superuser" ) );
+
+        return this->_chk_admin;
     }
 
     /// ------------------------------------------------------------------------
